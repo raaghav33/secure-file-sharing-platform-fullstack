@@ -9,6 +9,8 @@ from fastapi import FastAPI, File, UploadFile, HTTPException, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse, JSONResponse
 from google.cloud import storage
+from google.oauth2 import service_account
+import json
 
 # Config from env
 GCS_BUCKET = os.environ.get("GCS_BUCKET")
@@ -20,7 +22,21 @@ if not GCS_BUCKET:
     raise RuntimeError("GCS_BUCKET environment variable must be set")
 
 # Initialize GCS client (uses GOOGLE_APPLICATION_CREDENTIALS env var)
-storage_client = storage.Client()
+# Initialize GCS client
+gcs_credentials_json = os.environ.get("GCS_CREDENTIALS_JSON")
+
+if gcs_credentials_json:
+    credentials_info = json.loads(gcs_credentials_json)
+    credentials = service_account.Credentials.from_service_account_info(
+        credentials_info
+    )
+    storage_client = storage.Client(
+        project=credentials_info["project_id"],
+        credentials=credentials,
+    )
+else:
+    # Local development
+    storage_client = storage.Client.from_service_account_json("gcs-key.json")
 bucket = storage_client.bucket(GCS_BUCKET)
 
 app = FastAPI(title="PDF Uploader (GCS)")
