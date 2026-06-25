@@ -1,0 +1,8 @@
+.venv/
+.env
+__pycache__/
+*.pyc
+
+gcs-key.json
+debug_received/
+downloaded_*.pdf

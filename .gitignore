@@ -1,0 +1,20 @@
+# Python
+backend/.venv/
+__pycache__/
+*.pyc
+
+# Environment files
+backend/.env
+frontend/.env
+frontend/.env.local
+
+# Google Cloud credentials
+backend/gcs-key.json
+
+# Node.js
+frontend/node_modules/
+frontend/.next/
+
+# OS
+.DS_Store
+Thumbs.db
