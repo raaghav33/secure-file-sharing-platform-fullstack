@@ -20,6 +20,37 @@ A secure cloud-based file sharing platform that allows users to upload files and
 
 \---
 
+## 📸 Screenshots
+
+### Home Page
+
+![Home](assets/home.png)
+
+---
+
+### Upload File
+
+![Upload](assets/upload.png)
+
+---
+
+### Access Code Generated
+
+![Success](assets/success.png)
+
+---
+
+### Access Page
+
+![Access](assets/access.png)
+
+---
+
+### Downloaded File
+
+![Download](assets/download.png)
+
+
 
 
 \## ✨ Features
@@ -220,7 +251,7 @@ NEXT\_PUBLIC\_API\_BASE\_URL
 
 \* Multiple file uploads
 
-\* User authentication
+\* Support of other file types
 
 \* File previews
 
